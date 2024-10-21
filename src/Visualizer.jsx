@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import TextLoop from "react-text-loop";
 import PathFindingVisualizer from './PathFindingVisualizer/PathFindingVisualizer';
-import SortingVisualizer from './SortingVisualizer/SortingVisualizer';
 import './Visualizer.css'
-import AIVisualizer from './AIVisualizer/AIVisualizer';
 
 export default class Visualizer extends Component {
     constructor(props) {
@@ -42,12 +40,6 @@ export default class Visualizer extends Component {
         if (this.state.mode === 'pathfinding') {
             renderObj = <PathFindingVisualizer setVisualizerRendering={this.changeRenderingState} getFunctions={this.getFunctions} />;
         }
-        else if (this.state.mode === 'sorting') {
-            renderObj = <SortingVisualizer setVisualizerRendering={this.changeRenderingState} getFunctions={this.getFunctions} />;
-        }
-        else if (this.state.mode === 'ai') {
-            renderObj = <AIVisualizer count={this.state.aicount} setVisualizerRendering={this.changeRenderingState} getFunctions={this.getFunctions}></AIVisualizer>
-        }
         else {
             renderObj =
                 <div class="welbotron">
@@ -77,22 +69,7 @@ export default class Visualizer extends Component {
                             <span></span>
                             PATH FINDING
                         </a>
-                        {/* <a href='#' class='mainpage-b' onClick={() => {
-                            if (!this.state.rendering) {
-                                this.setState({ mode: 'sorting', currentAlgorithm: null, sortingClicked: true });
-                            }
-                        }} data-toggle={this.state.sortingClicked ? "" : "modal"} data-target="#sortingIntroModal">
-                            <span></span>
-                            SORTING
-                        </a> */}
-                        {/* <a href='#' class='mainpage-b' onClick={() => {
-                            if (!this.state.rendering) {
-                                this.setState({ mode: 'ai', currentAlgorithm: null, AIClicked: true });
-                            }
-                        }} data-toggle={this.state.AIClicked ? "" : "modal"} data-target="#aiIntroModal">
-                            <span></span>
-                            ARTIFICIAL INTELLIGENCE
-                        </a> */}
+                        
                     </div>
                 </div>
         }
@@ -124,31 +101,7 @@ export default class Visualizer extends Component {
                         disabled={this.state.rendering}
                     >Pathfinding</button>
 
-                    {/* <button
-                        onClick={() => {
-                            if (!this.state.rendering) {
-                                this.setState({ mode: 'sorting', currentAlgorithm: null, sortingClicked: true });
-                                this.state.setAlgorithm(-1);
-                            }
-                        }}
-                        type="button" class="btn btn-dark navbtn"
-                        data-toggle={this.state.sortingClicked ? "" : "modal"} data-target="#sortingIntroModal"
-                        disabled={this.state.rendering}
-                    >Sorting</button> */}
-
-                    {/* <button
-                        onClick={() => {
-
-                            if (!this.state.rendering) {
-                                this.setState({ mode: 'ai', currentAlgorithm: null, AIClicked: true });
-                                this.state.setAlgorithm(-1);
-                            }
-                        }}
-                        type="button" class="btn btn-dark navbtn"
-                        data-toggle={this.state.AIClicked ? "" : "modal"} data-target="#aiIntroModal"
-                        disabled={this.state.rendering}
-                    >AI</button> */}
-
+                   
                     <div class={"dropdown" + invisibleOrNot}>
                         <button class="btn btn-secondary dropdown-toggle navbtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" disabled={this.state.rendering}>
                             {this.state.currentAlgorithm == null ? 'Algorithms' : this.state.currentAlgorithm}
@@ -179,9 +132,7 @@ export default class Visualizer extends Component {
                         </div>
                     </div>
 
-                    {/* <a href="https://github.com/JasonFengGit" style={{ marginLeft: "32%" }}>
-                        <img class="githubimg" src="https://github.com/JasonFengGit/Visualizer/raw/master/src/Github_icon.png" width="40px" height="40px" style={{ opacity: "0.7 !important"}} alt></img>
-                    </a> */}
+                    
                 </nav>
 
                 <div class="modal fade" id="setAlgoModal" role="dialog">
